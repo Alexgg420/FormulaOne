@@ -15,7 +15,7 @@ class CircuitoAdapter (
     val onShowDetail: (c: Circuito, view: View) -> Unit,
 ) : ListAdapter<Circuito, CircuitoAdapter.CircuitoListViewHolder>(CircuitoDiffCallBack) {
 
-    inner class CircuitoListViewHolder(
+    inner class CircuitoListViewHolder (
         private val binding: CircuitoItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bindCircuito(c: Circuito) {
@@ -62,8 +62,6 @@ class CircuitoAdapter (
             else -> "https://www.thedesignfrontier.com/wp-content/uploads/2019/05/f1-logo.png"
         }
     }
-
-
 
     private object CircuitoDiffCallBack : DiffUtil.ItemCallback<Circuito>() {
         override fun areItemsTheSame(oldItem: Circuito, newItem: Circuito): Boolean = oldItem == newItem

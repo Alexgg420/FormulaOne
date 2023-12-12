@@ -89,19 +89,7 @@ data class CircuitDetailItemsResponse(
     val circuit: Circuit,
     val date: String,
     val time: String,
-){
-    fun asApiModel():CircuitoApiModel {
-        return CircuitoApiModel(
-            round,
-            raceName,
-            circuit.circuitName,
-            circuit.location.country,
-            circuit.location.locality,
-            date,
-            time
-        )
-    }
-}
+)
 
 data class Circuit(
     val circuitName: String,

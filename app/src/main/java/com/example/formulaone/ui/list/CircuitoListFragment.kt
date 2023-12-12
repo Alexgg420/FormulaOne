@@ -36,11 +36,15 @@ class CircuitoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = CircuitListAdapter(requireContext()) { circuito ->
+            onShowDetail(circuito, view)
+        }
+        val rv = binding.circuitoList
+        rv.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.circuitoList.collect{
-                    val adapter = CircuitoAdapter(it, ::onShowDetail)
-                    binding.circuitoList.adapter = adapter
+                viewModel.uiState.collect{
+                    adapter.submitList(it.circuito)
                 }
             }
         }

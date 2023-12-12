@@ -18,13 +18,16 @@ class CircuitoRepository @Inject constructor(
 ) {
     val allCircuitos: Flow<List<Circuito>>
         get() {
-            return dbRepository.allCircuitos.map {
-                listCircuitoEntity -> listCircuitoEntity.asListCircuit()
+            val list = dbRepository.allCircuitos.map {
+                it.asListCircuit()
             }
+            return list
         }
 
-    suspend fun refreshList() = withContext(Dispatchers.IO){
-        val circuitoApiModelList = apiRepository.getAllCircuitos()
-        dbRepository.insert(circuitoApiModelList.asEntityModelList())
+    suspend fun refreshList() {
+        withContext(Dispatchers.IO){
+            val apiCircuito = apiRepository.getAllCircuitos()
+            dbRepository.insert(apiCircuito.asEntityModelList())
+        }
     }
 }

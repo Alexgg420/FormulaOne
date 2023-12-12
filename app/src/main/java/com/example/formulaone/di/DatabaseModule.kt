@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context):CircuitoDatabase {
+    fun provideCircuitoDatabase(@ApplicationContext context: Context):CircuitoDatabase {
         return CircuitoDatabase.getInstance(context)
     }
 

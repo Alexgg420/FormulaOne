@@ -10,7 +10,7 @@ import coil.load
 import com.example.formulaone.data.repository.Circuito
 import com.example.formulaone.databinding.CircuitoItemBinding
 
-class CircuitListAdapter(private val context: Context): ListAdapter<Circuito, CircuitListAdapter.CircuitoListViewHolder>(CircuitoDiffCallBack) {
+class CircuitListAdapter(private val context: Context, private val onItemClick: (Circuito) -> Unit): ListAdapter<Circuito, CircuitListAdapter.CircuitoListViewHolder>(CircuitoDiffCallBack) {
 
     inner class CircuitoListViewHolder(private val binding: CircuitoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -52,9 +52,8 @@ class CircuitListAdapter(private val context: Context): ListAdapter<Circuito, Ci
     }
 
     private object CircuitoDiffCallBack : DiffUtil.ItemCallback<Circuito>() {
-        override fun areItemsTheSame(oldItem: Circuito, newItem: Circuito): Boolean = oldItem == newItem
-
-        override fun areContentsTheSame(oldItem: Circuito, newItem: Circuito): Boolean = oldItem == newItem
+        override fun areItemsTheSame(oldItem: Circuito, newItem: Circuito) = oldItem.round == newItem.round
+        override fun areContentsTheSame(oldItem: Circuito, newItem: Circuito) = oldItem == newItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CircuitoListViewHolder {
@@ -65,5 +64,8 @@ class CircuitListAdapter(private val context: Context): ListAdapter<Circuito, Ci
     override fun onBindViewHolder(holder: CircuitoListViewHolder, position: Int) {
         val circuito = getItem(position)
         holder.bindCircuito(circuito)
+        holder.itemView.setOnClickListener {
+            onItemClick(circuito)
+        }
     }
 }

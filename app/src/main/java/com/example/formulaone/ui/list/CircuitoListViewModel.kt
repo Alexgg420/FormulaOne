@@ -20,10 +20,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CircuitoListViewModel @Inject constructor(private val repository: CircuitoRepository): ViewModel() {
-    private val _circuitList: MutableStateFlow<List<Circuito>>
-        = MutableStateFlow(listOf())
-    val circuitoList: StateFlow<List<Circuito>>
-        get() = _circuitList.asStateFlow()
+    private val _uiState = MutableStateFlow(CircuitoListUiState(listOf()))
+    val uiState: StateFlow<CircuitoListUiState>
+        get() = _uiState.asStateFlow()
     init {
         viewModelScope.launch {
             try {
@@ -34,7 +33,7 @@ class CircuitoListViewModel @Inject constructor(private val repository: Circuito
         }
         viewModelScope.launch {
             repository.allCircuitos.collect{
-                _circuitList.value = it
+                _uiState.value = CircuitoListUiState(it)
             }
         }
     }

@@ -10,8 +10,6 @@ import kotlinx.coroutines.flow.Flow
 interface CircuitoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createCircuit(listCircuitoEntity: List<CircuitoEntity>)
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createCircuit(circuitoEntity: CircuitoEntity)
     @Query("SELECT * FROM circuito")
     fun getAllCircuitos(): Flow<List<CircuitoEntity>>
 }

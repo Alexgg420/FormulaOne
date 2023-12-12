@@ -17,7 +17,7 @@ abstract class CircuitoDatabase(): RoomDatabase() {
         fun getInstance(context: Context): CircuitoDatabase {
             return _INSTANCE ?: synchronized(this) {
                 _INSTANCE ?: buildDatabase(context).also {
-                    database -> _INSTANCE = database
+                    _INSTANCE = it
                 }
             }
         }

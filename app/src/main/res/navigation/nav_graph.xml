@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/circuitoListFragment">
+
+    <fragment
+        android:id="@+id/circuitoListFragment"
+        android:name="com.example.formulaone.ui.list.CircuitoListFragment"
+        android:label="fragment_circuito_list"
+        tools:layout="@layout/fragment_circuito_list" >
+        <action
+            android:id="@+id/action_circuitoListFragment_to_circuitoDetailFragment"
+            app:destination="@id/circuitoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/circuitoDetailFragment"
+        android:name="com.example.formulaone.ui.detail.CircuitoDetailFragment"
+        android:label="fragment_circuito_detail"
+        tools:layout="@layout/fragment_circuito_detail" >
+        <argument
+            android:name="circuito"
+            app:argType="com.example.formulaone.data.repository.Circuito" />
+    </fragment>
+</navigation>

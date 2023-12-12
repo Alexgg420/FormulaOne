@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/gp_text">
+        </com.google.android.material.appbar.MaterialToolbar>
+        <ImageView
+            android:id="@+id/circuitoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="IMAGEN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            app:srcCompat="@drawable/f1_logo">
+        </ImageView>
+        <TextView
+            android:id="@+id/circuitoRoundText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoImageView"
+            app:layout_constraintBottom_toTopOf="@id/circuitoRaceNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="RONDA"/>
+
+        <TextView
+            android:id="@+id/circuitoRaceNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoRoundText"
+            app:layout_constraintBottom_toTopOf="@id/circuitoNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="NOMBRE DEL GRAN PREMIO"/>
+
+        <TextView
+            android:id="@+id/circuitoNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoRaceNameText"
+            app:layout_constraintBottom_toTopOf="@id/circuitoCountryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="NOMBRE DEL CIRCUITO"/>
+
+        <TextView
+            android:id="@+id/circuitoCountryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoNameText"
+            app:layout_constraintBottom_toTopOf="@id/circuitoLocalText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="PAÍS DEL CIRCUITO"/>
+
+        <TextView
+            android:id="@+id/circuitoLocalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoCountryText"
+            app:layout_constraintBottom_toTopOf="@id/circuitoDateText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="CIUDAD DEL CIRCUITO"/>
+
+        <TextView
+            android:id="@+id/circuitoDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoLocalText"
+            app:layout_constraintBottom_toTopOf="@id/circuitoTimeText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="DÍA DE LA CARRERA"/>
+
+        <TextView
+            android:id="@+id/circuitoTimeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/circuitoDateText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="HORA DE LA CARRERA"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

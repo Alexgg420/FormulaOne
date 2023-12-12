@@ -14,7 +14,7 @@ class CircuitoApiRepository @Inject constructor(private val service:CircuitoServ
             try {
                 val response = service.api.getDetailCircuito(circuitoListItem.round)
                 Log.d("circuitID", response.toString())
-                response?.asApiModel()
+                response.mrdata.raceTable.races[0].asApiModel()
             } catch (e: Exception) {
                 // Manejar el error, imprimir un mensaje de registro, etc.
                 Log.e("Error", "Error al obtener detalles del circuito para la ronda ${circuitoListItem.round}", e)

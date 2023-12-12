@@ -12,7 +12,7 @@ interface CircuitoApi {
     @GET("api/f1/2023.json")
     suspend fun getAllCircuitos(): CircuitSuperResponse
     @GET("api/f1/2023/{round}.json")
-    suspend fun getDetailCircuito(@Path("round") round:String):Races
+    suspend fun getDetailCircuito(@Path("round") round:String):CircuitSuperResponse
 }
 
 @Singleton

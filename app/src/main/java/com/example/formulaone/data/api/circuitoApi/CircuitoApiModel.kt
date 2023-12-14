@@ -1,4 +1,4 @@
-package com.example.formulaone.data.api
+package com.example.formulaone.data.api.circuitoApi
 
 import com.example.formulaone.data.local.CircuitoEntity
 import com.google.gson.annotations.SerializedName
@@ -47,7 +47,7 @@ data class Races(
     val date: String,
     val time: String,
 ){
-    fun asApiModel():CircuitoApiModel {
+    fun asApiModel(): CircuitoApiModel {
         return CircuitoApiModel(
             round,
             raceName,

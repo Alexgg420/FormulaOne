@@ -1,10 +1,9 @@
-package com.example.formulaone.data.api
+package com.example.formulaone.data.api.circuitoApi
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,7 +11,7 @@ interface CircuitoApi {
     @GET("api/f1/2023.json")
     suspend fun getAllCircuitos(): CircuitSuperResponse
     @GET("api/f1/2023/{round}.json")
-    suspend fun getDetailCircuito(@Path("round") round:String):CircuitSuperResponse
+    suspend fun getDetailCircuito(@Path("round") round:String): CircuitSuperResponse
 }
 
 @Singleton

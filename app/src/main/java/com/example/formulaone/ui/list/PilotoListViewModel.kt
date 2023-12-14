@@ -13,9 +13,9 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class CircuitoListViewModel @Inject constructor(private val repository: CircuitoRepository): ViewModel() {
-    private val _uiState = MutableStateFlow(CircuitoListUiState(listOf()))
-    val uiState: StateFlow<CircuitoListUiState>
+class PilotoListViewModel @Inject constructor(private val repository: CircuitoRepository): ViewModel() {
+    private val _uiState = MutableStateFlow(PilotoListUiState(listOf()))
+    val uiState: StateFlow<PilotoListUiState>
         get() = _uiState.asStateFlow()
     init {
         viewModelScope.launch {
@@ -26,8 +26,8 @@ class CircuitoListViewModel @Inject constructor(private val repository: Circuito
             }
         }
         viewModelScope.launch {
-            repository.allCircuitos.collect{
-                _uiState.value = CircuitoListUiState(it)
+            repository.allPilotos.collect{
+                _uiState.value = PilotoListUiState(it)
             }
         }
     }

@@ -8,11 +8,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CircuitoDBRepository @Inject constructor(private val circuitoDao: CircuitoDao) {
+class CircuitoDBRepository @Inject constructor(private val circuitoDao: CircuitoDao, private val pilotoDao: PilotoDao) {
     val allCircuitos: Flow<List<CircuitoEntity>> = circuitoDao.getAllCircuitos()
+    val allPilotos: Flow<List<PilotoEntity>> = pilotoDao.getAllPilotos()
 
     @WorkerThread
     suspend fun insert(listCircuitoEntity: List<CircuitoEntity>) {
         circuitoDao.createCircuit(listCircuitoEntity)
+    }
+
+    @WorkerThread
+    suspend fun insertt(listPilotoEntity: List<PilotoEntity>) {
+        pilotoDao.createPiloto(listPilotoEntity)
     }
 }

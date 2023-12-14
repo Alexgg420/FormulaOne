@@ -11,22 +11,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation.findNavController
 import com.example.formulaone.R
-import com.example.formulaone.data.repository.Circuito
-import com.example.formulaone.databinding.FragmentCircuitoListBinding
+import com.example.formulaone.data.repository.Piloto
+import com.example.formulaone.databinding.FragmentPilotoListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CircuitoListFragment : Fragment() {
+class PilotoListFragment : Fragment() {
 
-    private lateinit var binding: FragmentCircuitoListBinding
-    private val viewModel:CircuitoListViewModel by viewModels()
+    private lateinit var binding: FragmentPilotoListBinding
+    private val viewModel:PilotoListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCircuitoListBinding.inflate(inflater,
+        binding = FragmentPilotoListBinding.inflate(inflater,
             container,
             false,
         )
@@ -35,24 +35,24 @@ class CircuitoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CircuitoListAdapter(requireContext()) { circuito ->
-            onShowDetail(circuito, view)
+        val adapter = PilotoListAdapter(requireContext()) { piloto ->
+            onShowDetail(piloto, view)
         }
-        val rv = binding.circuitoList
+        val rv = binding.pilotoList
         rv.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect{
-                    adapter.submitList(it.circuito)
+                    adapter.submitList(it.piloto)
                 }
             }
         }
     }
 
-    fun onShowDetail(circuito: Circuito, view: View) {
+    fun onShowDetail(piloto: Piloto, view: View) {
         val bundle = Bundle()
-        bundle.putParcelable("circuito", circuito)
+        bundle.putParcelable("piloto", piloto)
         val navController = findNavController(view)
-        navController.navigate(R.id.action_circuitoListFragment_to_circuitoDetailFragment, bundle)
+        navController.navigate(R.id.action_pilotoListFragment_to_pilotoDetailFragment, bundle)
     }
 }

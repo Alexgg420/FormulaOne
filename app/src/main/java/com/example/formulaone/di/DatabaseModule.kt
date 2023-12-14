@@ -3,6 +3,7 @@ package com.example.formulaone.di
 import android.content.Context
 import com.example.formulaone.data.local.CircuitoDao
 import com.example.formulaone.data.local.CircuitoDatabase
+import com.example.formulaone.data.local.PilotoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +25,11 @@ object DatabaseModule {
     @Provides
     fun provideCircuitoDao(database: CircuitoDatabase): CircuitoDao {
         return database.circuitoDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providePilotoDao(database: CircuitoDatabase): PilotoDao {
+        return database.pilotoDao()
     }
 }

@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.list.CircuitoListFragment"
-    android:id="@+id/circuitoListFragment">
-
+    tools:context=".ui.list.PilotoListFragment"
+    android:id="@+id/pilotoListFragment">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/circuito_list"
+        android:id="@+id/piloto_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/circuito_item"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/piloto_item">
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

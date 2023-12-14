@@ -10,7 +10,7 @@ import coil.load
 import com.example.formulaone.data.repository.Circuito
 import com.example.formulaone.databinding.CircuitoItemBinding
 
-class CircuitListAdapter(private val context: Context, private val onItemClick: (Circuito) -> Unit): ListAdapter<Circuito, CircuitListAdapter.CircuitoListViewHolder>(CircuitoDiffCallBack) {
+class CircuitoListAdapter(private val context: Context, private val onItemClick: (Circuito) -> Unit): ListAdapter<Circuito, CircuitoListAdapter.CircuitoListViewHolder>(CircuitoDiffCallBack) {
 
     inner class CircuitoListViewHolder(private val binding: CircuitoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -5,19 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CircuitoEntity::class], version = 1)
-abstract class CircuitoDatabase(): RoomDatabase() {
+@Database(entities = [CircuitoEntity::class, PilotoEntity::class], version = 2)
+abstract class CircuitoDatabase : RoomDatabase() {
 
     abstract fun circuitoDao(): CircuitoDao
 
+    abstract fun pilotoDao(): PilotoDao
+
     companion object {
         @Volatile
-        private var _INSTANCE: CircuitoDatabase? = null
+        private var INSTANCE: CircuitoDatabase? = null
 
         fun getInstance(context: Context): CircuitoDatabase {
-            return _INSTANCE ?: synchronized(this) {
-                _INSTANCE ?: buildDatabase(context).also {
-                    _INSTANCE = it
+            return INSTANCE ?: synchronized(this) {
+                INSTANCE ?: buildDatabase(context).also {
+                    INSTANCE = it
                 }
             }
         }
@@ -27,7 +29,7 @@ abstract class CircuitoDatabase(): RoomDatabase() {
                 context.applicationContext,
                 CircuitoDatabase::class.java,
                 "circuito_db"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
         }
     }
 }

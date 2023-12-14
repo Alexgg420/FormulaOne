@@ -1,4 +1,4 @@
-package com.example.formulaone.data.api
+package com.example.formulaone.data.api.circuitoApi
 
 import android.util.Log
 import javax.inject.Inject
@@ -6,7 +6,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-class CircuitoApiRepository @Inject constructor(private val service:CircuitoService){
+class CircuitoApiRepository @Inject constructor(private val service: CircuitoService){
 
     suspend fun getAllCircuitos(): List<CircuitoApiModel> {
         val simpleList = service.api.getAllCircuitos()

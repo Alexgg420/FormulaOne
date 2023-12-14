@@ -7,10 +7,10 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface CircuitoDao {
+interface PilotoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createCircuit(listCircuitoEntity: List<CircuitoEntity>)
+    suspend fun createPiloto(listPilotoEntity: List<PilotoEntity>)
 
-    @Query("SELECT * FROM circuito")
-    fun getAllCircuitos(): Flow<List<CircuitoEntity>>
+    @Query("SELECT * FROM piloto")
+    fun getAllPilotos(): Flow<List<PilotoEntity>>
 }

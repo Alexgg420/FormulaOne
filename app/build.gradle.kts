@@ -60,6 +60,9 @@ dependencies {
     implementation("io.coil-kt:coil:2.5.0")
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     // Room
     val room_version = "2.6.0"
     kapt("androidx.room:room-compiler:$room_version")

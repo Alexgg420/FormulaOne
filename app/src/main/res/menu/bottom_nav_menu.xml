@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/circuitoListFragment"
+        android:title="@string/circuitos"
+        android:icon="@drawable/f1logo" />
+    <item
+        android:id="@+id/pilotoListFragment"
+        android:title="@string/pilotos"
+        android:icon="@drawable/f1logo" />
+</menu>

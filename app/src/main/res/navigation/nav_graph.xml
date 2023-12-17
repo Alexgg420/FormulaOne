@@ -6,4 +6,5 @@
     app:startDestination="@id/circuitos_nav_graph">
     <include app:graph="@navigation/circuitos_nav_graph" />
     <include app:graph="@navigation/pilotos_nav_graph" />
+    <include app:graph="@navigation/equipos_nav_graph" />
 </navigation>

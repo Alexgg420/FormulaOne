@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.pilotos_nav_graph)
                     true
                 }
+                R.id.equipoListFragment -> {
+                    navController.navigate(R.id.equipos_nav_graph)
+                    true
+                }
                 else -> false
             }
         }

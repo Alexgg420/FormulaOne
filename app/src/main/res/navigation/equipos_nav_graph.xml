@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/equipos_nav_graph"
+    app:startDestination="@id/equipoListFragment">
+
+    <fragment
+        android:id="@+id/equipoListFragment"
+        android:name="com.example.formulaone.ui.list.EquipoListFragment"
+        android:label="fragment_equipo_list"
+        tools:layout="@layout/fragment_equipo_list" >
+        <action
+            android:id="@+id/action_equipoListFragment_to_equipoDetailFragment"
+            app:destination="@id/equipoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/equipoDetailFragment"
+        android:name="com.example.formulaone.ui.detail.EquipoDetailFragment"
+        android:label="fragment_equipo_detail"
+        tools:layout="@layout/fragment_equipo_detail" >
+        <argument
+            android:name="equipo"
+            app:argType="com.example.formulaone.data.repository.Equipo" />
+    </fragment>
+</navigation>

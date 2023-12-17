@@ -5,7 +5,9 @@ import com.example.formulaone.data.api.circuitoApi.asEntityModelList
 import com.example.formulaone.data.api.pilotoApi.PilotoApiRepository
 import com.example.formulaone.data.api.pilotoApi.asEntityModelList
 import com.example.formulaone.data.local.CircuitoDBRepository
+import com.example.formulaone.data.local.EquipoLocalRepository
 import com.example.formulaone.data.local.asListCircuit
+import com.example.formulaone.data.local.asListEquipo
 import com.example.formulaone.data.local.asListPiloto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +20,8 @@ import javax.inject.Singleton
 class CircuitoRepository @Inject constructor(
     private val dbRepository: CircuitoDBRepository,
     private val apiRepository: CircuitoApiRepository,
-    private val apiRepository2: PilotoApiRepository
+    private val apiRepository2: PilotoApiRepository,
+    //private val localRepository: EquipoLocalRepository
 ) {
     val allCircuitos: Flow<List<Circuito>>
         get() = dbRepository.allCircuitos
@@ -36,14 +39,24 @@ class CircuitoRepository @Inject constructor(
                 }
             }
 
+    val allEquipo: Flow<List<Equipo>>
+        get() = dbRepository.allEquipos
+            .map { entities ->
+                withContext(Dispatchers.Default) {
+                    entities.asListEquipo()
+                }
+            }
+
 
     suspend fun refreshList() {
         withContext(Dispatchers.IO) {
             try {
                 val apiCircuito = apiRepository.getAllCircuitos()
                 val apiPiloto = apiRepository2.getAllPilotos()
+                //val localEquipo = localRepository.getAllEquipos()
                 dbRepository.insert(apiCircuito.asEntityModelList())
                 dbRepository.insertt(apiPiloto.asEntityModelList())
+                //dbRepository.inserttt(localEquipo.asEntityModelList())
             } catch (e: Exception) {
                 e.printStackTrace()
             }

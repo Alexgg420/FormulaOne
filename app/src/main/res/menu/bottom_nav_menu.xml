@@ -8,4 +8,8 @@
         android:id="@+id/pilotoListFragment"
         android:title="@string/pilotos"
         android:icon="@drawable/f1logo" />
+    <item
+        android:id="@+id/equipoListFragment"
+        android:title="@string/equipos"
+        android:icon="@drawable/f1logo" />
 </menu>

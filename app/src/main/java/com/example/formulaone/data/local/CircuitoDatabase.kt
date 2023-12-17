@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CircuitoEntity::class, PilotoEntity::class], version = 2)
+@Database(entities = [CircuitoEntity::class, PilotoEntity::class, EquipoEntity::class], version = 3)
 abstract class CircuitoDatabase : RoomDatabase() {
 
     abstract fun circuitoDao(): CircuitoDao
 
     abstract fun pilotoDao(): PilotoDao
+
+    abstract fun equipoDao(): EquipoDao
 
     companion object {
         @Volatile

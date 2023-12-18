@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Equipo(
-    var id: Int,
+    var id: Int = 0,
     val nombre: String,
     val piloto1: String,
     val piloto2: String

@@ -1,4 +1,4 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.equipo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,24 +9,24 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.Navigation.findNavController
-import com.example.formulaone.R
-import com.example.formulaone.data.repository.Circuito
-import com.example.formulaone.databinding.FragmentCircuitoListBinding
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
+import com.example.formulaone.data.repository.Equipo
+import com.example.formulaone.databinding.FragmentEquipoListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CircuitoListFragment : Fragment() {
+class EquipoListFragment : Fragment() {
 
-    private lateinit var binding: FragmentCircuitoListBinding
-    private val viewModel:CircuitoListViewModel by viewModels()
+    private lateinit var binding: FragmentEquipoListBinding
+    private val viewModel: EquipoListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCircuitoListBinding.inflate(inflater,
+        binding = FragmentEquipoListBinding.inflate(inflater,
             container,
             false,
         )
@@ -35,24 +35,25 @@ class CircuitoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CircuitoListAdapter(requireContext()) { circuito ->
-            onShowDetail(circuito, view)
-        }
-        val rv = binding.circuitoList
+        val adapter = EquipoListAdapter(requireContext(), ::onEdit)
+        val rv = binding.equipoList
         rv.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect{
-                    adapter.submitList(it.circuito)
+                    adapter.submitList(it.equipo)
                 }
             }
         }
+        binding.createEquipo.setOnClickListener {
+            onNew()
+        }
     }
 
-    fun onShowDetail(circuito: Circuito, view: View) {
-        val bundle = Bundle()
-        bundle.putParcelable("circuito", circuito)
-        val navController = findNavController(view)
-        navController.navigate(R.id.action_circuitoListFragment_to_circuitoDetailFragment, bundle)
+    fun onNew() {
+        val action = EquipoListFragmentDirections.actionEquipoListFragmentToEquipoDetailFragment()
+        findNavController().navigate(action)
+    }
+    fun onEdit(equipo: Equipo) {
     }
 }

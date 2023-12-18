@@ -1,4 +1,4 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.equipo
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import coil.load
 import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.EquipoItemBinding
 
-class EquipoListAdapter (private val context: Context
+class EquipoListAdapter (private val context: Context, private val onEdit: (Equipo) -> Unit
 ): ListAdapter<Equipo, EquipoListAdapter.EquipoViewHolder>(EquipoDiffCallBack) {
     var onEditClickListener: ((Equipo, View) -> Unit)? = null
     inner class EquipoViewHolder(val binding: EquipoItemBinding): RecyclerView.ViewHolder(binding.root) {

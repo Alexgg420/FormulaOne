@@ -1,4 +1,4 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.piloto
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.formulaone.data.repository.Circuito
 import com.example.formulaone.data.repository.Piloto
-import com.example.formulaone.databinding.CircuitoItemBinding
 import com.example.formulaone.databinding.PilotoItemBinding
 
-class PilotoListAdapter(private val context: Context, private val onItemClick: (Piloto) -> Unit): ListAdapter<Piloto, PilotoListAdapter.PilotoListViewHolder>(PilotoDiffCallBack) {
+class PilotoListAdapter(private val context: Context, private val onItemClick: (Piloto) -> Unit): ListAdapter<Piloto, PilotoListAdapter.PilotoListViewHolder>(
+    PilotoDiffCallBack
+) {
 
     inner class PilotoListViewHolder(private val binding: PilotoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

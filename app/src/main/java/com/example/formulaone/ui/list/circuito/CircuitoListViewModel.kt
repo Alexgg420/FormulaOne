@@ -1,9 +1,10 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.circuito
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.formulaone.data.repository.CircuitoRepository
+import com.example.formulaone.ui.list.circuito.CircuitoListUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,9 +14,9 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class EquipoListViewModel @Inject constructor(private val repository: CircuitoRepository): ViewModel() {
-    private val _uiState = MutableStateFlow(EquipoListUiState(listOf()))
-    val uiState: StateFlow<EquipoListUiState>
+class CircuitoListViewModel @Inject constructor(private val repository: CircuitoRepository): ViewModel() {
+    private val _uiState = MutableStateFlow(CircuitoListUiState(listOf()))
+    val uiState: StateFlow<CircuitoListUiState>
         get() = _uiState.asStateFlow()
     init {
         viewModelScope.launch {
@@ -26,8 +27,8 @@ class EquipoListViewModel @Inject constructor(private val repository: CircuitoRe
             }
         }
         viewModelScope.launch {
-            repository.allEquipo.collect{
-                _uiState.value = EquipoListUiState(it)
+            repository.allCircuitos.collect{
+                _uiState.value = CircuitoListUiState(it)
             }
         }
     }

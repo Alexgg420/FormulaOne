@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/equipoListFragment"
-        android:name="com.example.formulaone.ui.list.EquipoListFragment"
+        android:name="com.example.formulaone.ui.list.equipo.EquipoListFragment"
         android:label="fragment_equipo_list"
         tools:layout="@layout/fragment_equipo_list" >
         <action
@@ -19,8 +19,5 @@
         android:name="com.example.formulaone.ui.detail.EquipoDetailFragment"
         android:label="fragment_equipo_detail"
         tools:layout="@layout/fragment_equipo_detail" >
-        <argument
-            android:name="equipo"
-            app:argType="com.example.formulaone.data.repository.Equipo" />
     </fragment>
 </navigation>

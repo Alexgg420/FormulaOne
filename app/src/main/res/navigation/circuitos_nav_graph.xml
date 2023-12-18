@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/circuitoListFragment"
-        android:name="com.example.formulaone.ui.list.CircuitoListFragment"
+        android:name="com.example.formulaone.ui.list.circuito.CircuitoListFragment"
         android:label="fragment_circuito_list"
         tools:layout="@layout/fragment_circuito_list" >
         <action

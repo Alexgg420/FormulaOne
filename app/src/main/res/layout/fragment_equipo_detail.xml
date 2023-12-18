@@ -1,70 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_margin="8dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolBar"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="PILOTO">
+    </com.google.android.material.appbar.MaterialToolbar>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/equipoNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        android:hint="NOMBRE">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nombreInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/equipoImageView"
-            app:title="@string/equipos">
-        </com.google.android.material.appbar.MaterialToolbar>
-        <ImageView
-            android:id="@+id/equipoImageView"
-            android:layout_width="match_parent"
-            android:layout_height="194dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="IMAGEN"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolBar"
-            app:srcCompat="@drawable/f1_logo">
-        </ImageView>
-        <TextView
-            android:id="@+id/equipoNombre"
+            android:layout_margin="6dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/equipoPiloto1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:layout_constraintStart_toStartOf="@id/equipoNombre"
+        app:layout_constraintTop_toBottomOf="@id/equipoNombre"
+        android:hint="PILOTO 1">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/piloto1Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            app:layout_constraintTop_toBottomOf="@id/equipoImageView"
-            app:layout_constraintBottom_toTopOf="@id/equipoPiloto1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="NOMBRE"/>
-
-        <TextView
-            android:id="@+id/equipoPiloto1"
+            android:layout_margin="6dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/equipoPiloto2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:layout_constraintStart_toStartOf="@id/equipoNombre"
+        app:layout_constraintTop_toBottomOf="@id/equipoPiloto1"
+        android:hint="PILOTO 2">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/piloto2Input"
+            android:layout_margin="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            app:layout_constraintTop_toBottomOf="@id/equipoNombre"
-            app:layout_constraintBottom_toTopOf="@id/equipoPiloto2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="PILOTO 1"/>
-
-        <TextView
-            android:id="@+id/equipoPiloto2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            app:layout_constraintTop_toBottomOf="@id/equipoPiloto1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="PILOTO 2"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            android:layout_height="wrap_content">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cancel_button"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equipoPiloto2"
+        app:layout_constraintVertical_bias="0.129">
+    </Button>
+    <Button
+        android:id="@+id/cancel_button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="60dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.816"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/equipoPiloto2"
+        app:layout_constraintVertical_bias="0.125">
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

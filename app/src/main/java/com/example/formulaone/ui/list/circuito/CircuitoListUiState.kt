@@ -1,4 +1,4 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.circuito
 
 import com.example.formulaone.data.repository.Circuito
 

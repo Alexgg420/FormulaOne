@@ -1,5 +1,7 @@
 package com.example.formulaone.ui.detail
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +12,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.example.formulaone.data.local.EquipoLocalRepository
+import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.FragmentEquipoDetailBinding
+import com.example.formulaone.ui.MainActivity
 
 class EquipoDetailFragment : Fragment() {
     private lateinit var binding: FragmentEquipoDetailBinding
-    private val args: EquipoDetailFragmentArgs by navArgs()
+    private val repository = EquipoLocalRepository.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +30,9 @@ class EquipoDetailFragment : Fragment() {
             .inflate(inflater, container, false)
         return binding.root
     }
+    var nombre = ""
+    var piloto1 = ""
+    var piloto2 = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,11 +42,21 @@ class EquipoDetailFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-        val imageUrl = obtenerUrlImagen()
-        binding.equipoImageView.load(imageUrl)
-        binding.equipoNombre.text = "Nombre: " + args.equipo.nombre
-        binding.equipoPiloto1.text = "Piloto 1: " + args.equipo.piloto1
-        binding.equipoPiloto2.text = "Piloto 2: " + args.equipo.piloto2
+        binding.nombreInput.setText(nombre)
+        binding.piloto1Input.setText(piloto1)
+        binding.piloto2Input.setText(piloto2)
+        binding.submitButton.setOnClickListener {
+            var equipo = Equipo(id, binding.equipoNombre.toString(), binding.equipoPiloto1.toString(), binding.equipoPiloto2.toString())
+            repository.update(equipo)
+            //setResult(Activity.RESULT_OK)
+            //val intent = Intent(this, MainActivity::class.java)
+            //startActivity(intent)
+            //finish()
+        }
+        binding.cancelButton.setOnClickListener {
+            //setResult(Activity.RESULT_CANCELED)
+            //finish()
+        }
     }
 
     private fun obtenerUrlImagen(): String {

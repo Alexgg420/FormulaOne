@@ -1,4 +1,4 @@
-package com.example.formulaone.ui.list
+package com.example.formulaone.ui.list.piloto
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class PilotoListFragment : Fragment() {
 
     private lateinit var binding: FragmentPilotoListBinding
-    private val viewModel:PilotoListViewModel by viewModels()
+    private val viewModel: PilotoListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

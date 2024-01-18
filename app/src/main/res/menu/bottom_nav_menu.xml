@@ -3,13 +3,13 @@
     <item
         android:id="@+id/circuitoListFragment"
         android:title="@string/circuitos"
-        android:icon="@drawable/f1logo" />
+        android:icon="@drawable/iconcircuito" />
     <item
         android:id="@+id/pilotoListFragment"
         android:title="@string/pilotos"
-        android:icon="@drawable/f1logo" />
+        android:icon="@drawable/iconpiloto" />
     <item
         android:id="@+id/equipoListFragment"
         android:title="@string/equipos"
-        android:icon="@drawable/f1logo" />
+        android:icon="@drawable/iconequipo" />
 </menu>

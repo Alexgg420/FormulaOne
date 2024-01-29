@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/circuitos_nav_graph">
-    <include app:graph="@navigation/circuitos_nav_graph" />
-    <include app:graph="@navigation/pilotos_nav_graph" />
-    <include app:graph="@navigation/equipos_nav_graph" />
+    <include
+        app:graph="@navigation/circuitos_nav_graph">
+    </include>
+    <include
+        app:graph="@navigation/pilotos_nav_graph">
+    </include>
+    <include
+        app:graph="@navigation/equipos_nav_graph">
+    </include>
 </navigation>

@@ -41,8 +41,8 @@
             app:layout_constraintBottom_toTopOf="@id/pilotoCode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="NOMBRE DEL PILOTO"/>
-
+            tools:text="NOMBRE DEL PILOTO">
+        </TextView>
         <TextView
             android:id="@+id/pilotoCode"
             android:layout_width="match_parent"
@@ -53,8 +53,8 @@
             app:layout_constraintBottom_toTopOf="@id/pilotoNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="CÓDIGO DEL PILOTO"/>
-
+            tools:text="CÓDIGO DEL PILOTO">
+        </TextView>
         <TextView
             android:id="@+id/pilotoNumber"
             android:layout_width="match_parent"
@@ -65,8 +65,8 @@
             app:layout_constraintBottom_toTopOf="@id/pilotoFecNac"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="NUMERO DEL PILOTO"/>
-
+            tools:text="NUMERO DEL PILOTO">
+        </TextView>
         <TextView
             android:id="@+id/pilotoFecNac"
             android:layout_width="match_parent"
@@ -77,8 +77,8 @@
             app:layout_constraintBottom_toTopOf="@id/pilotoNation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="FECHA DE NACIMIENTO DEL PILOTO"/>
-
+            tools:text="FECHA DE NACIMIENTO DEL PILOTO">
+        </TextView>
         <TextView
             android:id="@+id/pilotoNation"
             android:layout_width="match_parent"
@@ -88,6 +88,7 @@
             app:layout_constraintTop_toBottomOf="@id/pilotoFecNac"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="PAIS DEL PILOTO"/>
+            tools:text="PAIS DEL PILOTO">
+        </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

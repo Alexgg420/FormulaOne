@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/circuitos_nav_graph"
     app:startDestination="@id/circuitoListFragment">
-
     <fragment
         android:id="@+id/circuitoListFragment"
         android:name="com.example.formulaone.ui.list.circuito.CircuitoListFragment"
         android:label="fragment_circuito_list"
-        tools:layout="@layout/fragment_circuito_list" >
+        tools:layout="@layout/fragment_circuito_list">
         <action
             android:id="@+id/action_circuitoListFragment_to_circuitoDetailFragment"
-            app:destination="@id/circuitoDetailFragment" />
+            app:destination="@id/circuitoDetailFragment">
+        </action>
     </fragment>
     <fragment
         android:id="@+id/circuitoDetailFragment"
         android:name="com.example.formulaone.ui.detail.CircuitoDetailFragment"
         android:label="fragment_circuito_detail"
-        tools:layout="@layout/fragment_circuito_detail" >
+        tools:layout="@layout/fragment_circuito_detail">
         <argument
             android:name="circuito"
-            app:argType="com.example.formulaone.data.repository.Circuito" />
+            app:argType="com.example.formulaone.data.repository.Circuito">
+        </argument>
     </fragment>
 </navigation>

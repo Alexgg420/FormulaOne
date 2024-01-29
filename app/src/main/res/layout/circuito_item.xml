@@ -32,7 +32,8 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="ROUND" />
+            tools:text="ROUND">
+        </TextView>
         <TextView
             android:id="@+id/circuitoRaceNameText"
             android:layout_width="wrap_content"
@@ -42,6 +43,7 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="NOMBRE" />
+            tools:text="NOMBRE">
+        </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

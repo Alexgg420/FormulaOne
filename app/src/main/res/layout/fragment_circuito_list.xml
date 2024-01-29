@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.list.circuito.CircuitoListFragment"
     android:id="@+id/circuitoListFragment">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/circuito_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/circuito_item"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/circuito_item">
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

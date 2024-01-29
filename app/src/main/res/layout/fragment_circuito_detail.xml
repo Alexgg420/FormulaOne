@@ -40,8 +40,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoRaceNameText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="RONDA"/>
-
+            tools:text="RONDA">
+        </TextView>
         <TextView
             android:id="@+id/circuitoRaceNameText"
             android:layout_width="match_parent"
@@ -52,8 +52,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoNameText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="NOMBRE DEL GRAN PREMIO"/>
-
+            tools:text="NOMBRE DEL GRAN PREMIO">
+        </TextView>
         <TextView
             android:id="@+id/circuitoNameText"
             android:layout_width="match_parent"
@@ -64,8 +64,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoCountryText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="NOMBRE DEL CIRCUITO"/>
-
+            tools:text="NOMBRE DEL CIRCUITO">
+        </TextView>
         <TextView
             android:id="@+id/circuitoCountryText"
             android:layout_width="match_parent"
@@ -76,8 +76,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoLocalText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="PAÍS DEL CIRCUITO"/>
-
+            tools:text="PAÍS DEL CIRCUITO">
+        </TextView>
         <TextView
             android:id="@+id/circuitoLocalText"
             android:layout_width="match_parent"
@@ -88,8 +88,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoDateText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="CIUDAD DEL CIRCUITO"/>
-
+            tools:text="CIUDAD DEL CIRCUITO">
+        </TextView>
         <TextView
             android:id="@+id/circuitoDateText"
             android:layout_width="match_parent"
@@ -100,8 +100,8 @@
             app:layout_constraintBottom_toTopOf="@id/circuitoTimeText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="DÍA DE LA CARRERA"/>
-
+            tools:text="DÍA DE LA CARRERA">
+        </TextView>
         <TextView
             android:id="@+id/circuitoTimeText"
             android:layout_width="match_parent"
@@ -112,6 +112,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="HORA DE LA CARRERA"/>
+            tools:text="HORA DE LA CARRERA">
+        </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

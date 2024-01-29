@@ -18,8 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:outlineSpotShadowColor="@color/red"
         android:layout_margin="16dp"
+        app:backgroundTint="@color/red"
+        app:tint="@android:color/white"
         android:src="@drawable/edit_icon">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

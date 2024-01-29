@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
@@ -46,16 +47,15 @@ class EquipoDetailFragment : Fragment() {
         binding.piloto1Input.setText(piloto1)
         binding.piloto2Input.setText(piloto2)
         binding.submitButton.setOnClickListener {
-            var equipo = Equipo(id, binding.equipoNombre.toString(), binding.equipoPiloto1.toString(), binding.equipoPiloto2.toString())
-            repository.update(equipo)
-            //setResult(Activity.RESULT_OK)
-            //val intent = Intent(this, MainActivity::class.java)
-            //startActivity(intent)
-            //finish()
+            val equipo = Equipo(id, binding.equipoNombre.toString(), binding.equipoPiloto1.toString(), binding.equipoPiloto2.toString())
+            val result = Bundle().apply {
+                putParcelable("equipo", equipo)
+            }
+            setFragmentResult("equipoKey", result)
+            findNavController().navigateUp()
         }
         binding.cancelButton.setOnClickListener {
-            //setResult(Activity.RESULT_CANCELED)
-            //finish()
+            findNavController().navigateUp()
         }
     }
 

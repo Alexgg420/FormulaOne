@@ -24,7 +24,7 @@ class CircuitoDBRepository @Inject constructor(private val circuitoDao: Circuito
     }
 
     @WorkerThread
-    suspend fun  inserttt(listEquipoEntity: List<EquipoEntity>) {
+    suspend fun inserttt(listEquipoEntity: List<EquipoEntity>) {
         equipoDao.createEquipo(listEquipoEntity)
     }
 }

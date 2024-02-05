@@ -1,4 +1,4 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database.circuito
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

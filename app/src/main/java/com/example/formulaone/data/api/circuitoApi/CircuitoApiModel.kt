@@ -1,6 +1,6 @@
 package com.example.formulaone.data.api.circuitoApi
 
-import com.example.formulaone.data.local.CircuitoEntity
+import com.example.formulaone.data.database.circuito.CircuitoEntity
 import com.google.gson.annotations.SerializedName
 
 data class CircuitoApiModel(

@@ -41,7 +41,7 @@
             android:layout_margin="16dp"
             android:text="Editar"
             app:icon="@drawable/edit_icon"
-            app:layout_constraintStart_toEndOf="@id/equipoNombre"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/equipoImageView"
             app:layout_constraintBottom_toBottomOf="@id/equipoImageView">
         </Button>

@@ -1,7 +1,5 @@
 package com.example.formulaone.ui.detail
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,14 +11,13 @@ import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.example.formulaone.data.local.EquipoLocalRepository
+import com.example.formulaone.data.database.EquipoLocalRepository
 import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.FragmentEquipoDetailBinding
-import com.example.formulaone.ui.MainActivity
 
 class EquipoDetailFragment : Fragment() {
     private lateinit var binding: FragmentEquipoDetailBinding
-    private val repository = EquipoLocalRepository.getInstance()
+    private val args: EquipoDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,9 +28,6 @@ class EquipoDetailFragment : Fragment() {
             .inflate(inflater, container, false)
         return binding.root
     }
-    var nombre = ""
-    var piloto1 = ""
-    var piloto2 = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,20 +37,15 @@ class EquipoDetailFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-        binding.nombreInput.setText(nombre)
-        binding.piloto1Input.setText(piloto1)
-        binding.piloto2Input.setText(piloto2)
-        binding.submitButton.setOnClickListener {
-            val equipo = Equipo(id, binding.equipoNombre.toString(), binding.equipoPiloto1.toString(), binding.equipoPiloto2.toString())
-            val result = Bundle().apply {
-                putParcelable("equipo", equipo)
-            }
-            setFragmentResult("equipoKey", result)
-            findNavController().navigateUp()
-        }
-        binding.cancelButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        val imageUrl = obtenerUrlImagen()
+        binding.equipoImageView.load(imageUrl)
+        binding.piloto1Img.load(imageUrl)
+        binding.piloto2Img.load(imageUrl)
+        binding.equipoName.text = args.equipo.nombreEquipo
+        binding.piloto1Name.text = args.equipo.piloto1Nombre
+        binding.piloto1Number.text = args.equipo.piloto1Number.toString()
+        binding.piloto2Name.text = args.equipo.piloto2Nombre
+        binding.piloto2Number.text = args.equipo.piloto2Number.toString()
     }
 
     private fun obtenerUrlImagen(): String {

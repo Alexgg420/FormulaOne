@@ -1,10 +1,10 @@
 package com.example.formulaone.di
 
 import android.content.Context
-import com.example.formulaone.data.local.CircuitoDao
-import com.example.formulaone.data.local.CircuitoDatabase
-import com.example.formulaone.data.local.EquipoDao
-import com.example.formulaone.data.local.PilotoDao
+import com.example.formulaone.data.database.circuito.CircuitoDao
+import com.example.formulaone.data.database.CircuitoDatabase
+import com.example.formulaone.data.database.equipo.EquipoDao
+import com.example.formulaone.data.database.piloto.PilotoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Singleton
     @Provides
-    fun provideCircuitoDatabase(@ApplicationContext context: Context):CircuitoDatabase {
+    fun provideCircuitoDatabase(@ApplicationContext context: Context): CircuitoDatabase {
         return CircuitoDatabase.getInstance(context)
     }
 

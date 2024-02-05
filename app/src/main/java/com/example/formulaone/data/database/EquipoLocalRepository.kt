@@ -1,4 +1,4 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database
 
 import com.example.formulaone.data.repository.Equipo
 

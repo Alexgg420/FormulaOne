@@ -1,8 +1,6 @@
 package com.example.formulaone.data.api.pilotoApi
 
-import com.example.formulaone.data.api.circuitoApi.CircuitoApiModel
-import com.example.formulaone.data.local.CircuitoEntity
-import com.example.formulaone.data.local.PilotoEntity
+import com.example.formulaone.data.database.piloto.PilotoEntity
 import com.google.gson.annotations.SerializedName
 
 data class PilotoApiModel(

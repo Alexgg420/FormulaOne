@@ -18,10 +18,7 @@ class EquipoListAdapter (private val context: Context, private val onEdit: (Equi
         fun bindEquipo(e: Equipo) {
             val imageUrl = obtenerUrlImagen()
             binding.equipoImageView.load(imageUrl)
-            binding.equipoNombre.text = e.nombre
-            binding.editButton.setOnClickListener {
-                onEditClickListener?.invoke(e, it)
-            }
+            binding.equipoNombre.text = e.nombreEquipo
         }
     }
 

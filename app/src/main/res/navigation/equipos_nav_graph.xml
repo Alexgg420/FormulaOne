@@ -11,13 +11,22 @@
         tools:layout="@layout/fragment_equipo_list">
         <action
             android:id="@+id/action_equipoListFragment_to_equipoDetailFragment"
-            app:destination="@id/equipoDetailFragment">
-        </action>
+            app:destination="@id/equipoDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/equipoDetailFragment"
         android:name="com.example.formulaone.ui.detail.EquipoDetailFragment"
         android:label="fragment_equipo_detail"
         tools:layout="@layout/fragment_equipo_detail">
+        <argument
+            android:name="equipo"
+            app:argType="com.example.formulaone.data.repository.Equipo">
+        </argument>
+    </fragment>
+    <fragment
+        android:id="@+id/equipoCreateFragment"
+        android:name="com.example.formulaone.ui.detail.EquipoCreateFragment"
+        android:label="fragment_equipo_create"
+        tools:layout="@layout/fragment_equipo_create">
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database.circuito
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CircuitoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createCircuit(listCircuitoEntity: List<CircuitoEntity>)
+    suspend fun createCircuito(listCircuitoEntity: List<CircuitoEntity>)
 
     @Query("SELECT * FROM circuito")
     fun getAllCircuitos(): Flow<List<CircuitoEntity>>

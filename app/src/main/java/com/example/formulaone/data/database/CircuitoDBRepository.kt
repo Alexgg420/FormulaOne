@@ -1,8 +1,12 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database
 
 import androidx.annotation.WorkerThread
-import com.example.formulaone.data.local.CircuitoDao
-import com.example.formulaone.data.local.CircuitoEntity
+import com.example.formulaone.data.database.circuito.CircuitoDao
+import com.example.formulaone.data.database.circuito.CircuitoEntity
+import com.example.formulaone.data.database.equipo.EquipoDao
+import com.example.formulaone.data.database.equipo.EquipoEntity
+import com.example.formulaone.data.database.piloto.PilotoDao
+import com.example.formulaone.data.database.piloto.PilotoEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +19,7 @@ class CircuitoDBRepository @Inject constructor(private val circuitoDao: Circuito
 
     @WorkerThread
     suspend fun insert(listCircuitoEntity: List<CircuitoEntity>) {
-        circuitoDao.createCircuit(listCircuitoEntity)
+        circuitoDao.createCircuito(listCircuitoEntity)
     }
 
     @WorkerThread

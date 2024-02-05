@@ -4,11 +4,10 @@ import com.example.formulaone.data.api.circuitoApi.CircuitoApiRepository
 import com.example.formulaone.data.api.circuitoApi.asEntityModelList
 import com.example.formulaone.data.api.pilotoApi.PilotoApiRepository
 import com.example.formulaone.data.api.pilotoApi.asEntityModelList
-import com.example.formulaone.data.local.CircuitoDBRepository
-import com.example.formulaone.data.local.EquipoLocalRepository
-import com.example.formulaone.data.local.asListCircuit
-import com.example.formulaone.data.local.asListEquipo
-import com.example.formulaone.data.local.asListPiloto
+import com.example.formulaone.data.database.CircuitoDBRepository
+import com.example.formulaone.data.database.circuito.asListCircuit
+import com.example.formulaone.data.database.equipo.asListEquipo
+import com.example.formulaone.data.database.piloto.asListPiloto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

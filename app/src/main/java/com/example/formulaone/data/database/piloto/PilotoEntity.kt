@@ -1,8 +1,7 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database.piloto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.formulaone.data.repository.Circuito
 import com.example.formulaone.data.repository.Piloto
 
 @Entity(tableName = "piloto")

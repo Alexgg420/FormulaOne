@@ -1,4 +1,4 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database.equipo
 
 import androidx.room.Dao
 import androidx.room.Insert

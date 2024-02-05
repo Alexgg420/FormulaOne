@@ -1,11 +1,17 @@
-package com.example.formulaone.data.local
+package com.example.formulaone.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.formulaone.data.database.circuito.CircuitoDao
+import com.example.formulaone.data.database.circuito.CircuitoEntity
+import com.example.formulaone.data.database.equipo.EquipoDao
+import com.example.formulaone.data.database.equipo.EquipoEntity
+import com.example.formulaone.data.database.piloto.PilotoDao
+import com.example.formulaone.data.database.piloto.PilotoEntity
 
-@Database(entities = [CircuitoEntity::class, PilotoEntity::class, EquipoEntity::class], version = 3)
+@Database(entities = [CircuitoEntity::class, PilotoEntity::class, EquipoEntity::class], version = 4)
 abstract class CircuitoDatabase : RoomDatabase() {
 
     abstract fun circuitoDao(): CircuitoDao

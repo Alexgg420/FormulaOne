@@ -11,6 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.Navigation
+import com.example.formulaone.R
+import com.example.formulaone.data.repository.Circuito
 import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.FragmentEquipoListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +21,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EquipoListFragment : Fragment() {
-
     private lateinit var binding: FragmentEquipoListBinding
     private val viewModel: EquipoListViewModel by viewModels()
 
@@ -37,7 +39,9 @@ class EquipoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = EquipoListAdapter(requireContext(), ::onEdit)
+        val adapter = EquipoListAdapter(requireContext()) { equipo ->
+            onShowDetail(equipo, view)
+        }
         val rv = binding.equipoList
         rv.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
@@ -48,29 +52,15 @@ class EquipoListFragment : Fragment() {
             }
         }
 
-        // Escuchar los resultados del fragmento hijo
-        setFragmentResultListener("equipoKey") { _, result ->
-            val equipo = result.getParcelable<Equipo>("equipo")
-            // Hacer algo con el objeto 'equipo' recibido
-            // Por ejemplo, agregarlo a la lista, actualizar la vista, etc.
-            //viewModel.addEquipo(equipo) // Asume que tienes un método en el viewModel para agregar un nuevo equipo
-        }
-
         binding.createEquipo.setOnClickListener {
-            onNew()
+            //findNavController().navigate(R.id.action_equipoListFragment_to_equipoCreateFragment)
         }
     }
 
-    fun onNew() {
-        val action = EquipoListFragmentDirections.actionEquipoListFragmentToEquipoDetailFragment()
-        findNavController().navigate(action)
-    }
-
-    fun onEdit(equipo: Equipo) {
-        // Puedes implementar la edición del equipo aquí
-    }
-
-    fun onCancel() {
-        // Puedes implementar la cancelación aquí
+    fun onShowDetail(equipo: Equipo, view: View) {
+        val bundle = Bundle()
+        bundle.putParcelable("equipo", equipo)
+        val navController = Navigation.findNavController(view)
+        navController.navigate(R.id.action_equipoListFragment_to_equipoDetailFragment, bundle)
     }
 }

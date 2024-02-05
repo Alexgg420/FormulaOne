@@ -20,7 +20,7 @@
         android:layout_margin="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
-        android:hint="NOMBRE">
+        android:hint="NOMBRE DEL EQUIPO">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombreEquipo"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         android:layout_margin="6dp"
         app:layout_constraintStart_toStartOf="@id/equipoNombre"
         app:layout_constraintTop_toBottomOf="@id/equipoNombre"
-        android:hint="PILOTO 1">
+        android:hint="NOMBRE PILOTO 1">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombrePiloto1"
             android:layout_width="match_parent"
@@ -50,12 +50,13 @@
         android:layout_margin="6dp"
         app:layout_constraintStart_toStartOf="@id/namePiloto1"
         app:layout_constraintTop_toBottomOf="@id/namePiloto1"
-        android:hint="PILOTO 1">
+        android:hint="NÚMERO PILOTO 1">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numeroPiloto1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp">
+            android:layout_margin="6dp"
+            android:inputType="number">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +66,7 @@
         android:layout_margin="6dp"
         app:layout_constraintStart_toStartOf="@id/numberPiloto1"
         app:layout_constraintTop_toBottomOf="@id/numberPiloto1"
-        android:hint="PILOTO 2">
+        android:hint="NOMBRE PILOTO 2">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombrePiloto2"
             android:layout_margin="6dp"
@@ -80,12 +81,13 @@
         android:layout_margin="6dp"
         app:layout_constraintStart_toStartOf="@id/namePiloto2"
         app:layout_constraintTop_toBottomOf="@id/namePiloto2"
-        android:hint="PILOTO 1">
+        android:hint="NÚMERO PILOTO 2">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numeroPiloto2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp">
+            android:layout_margin="6dp"
+            android:inputType="number">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
     <Button

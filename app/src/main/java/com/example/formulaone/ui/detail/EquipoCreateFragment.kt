@@ -47,17 +47,26 @@ class EquipoCreateFragment : Fragment() {
         }
         binding.nombreEquipo.setText(nombreEquipo)
         binding.nombrePiloto1.setText(nombrePiloto1)
-        binding.numeroPiloto1.setText(numeroPiloto1)
+        binding.numeroPiloto1.setText(numeroPiloto1.toString())
         binding.nombrePiloto2.setText(nombrePiloto2)
-        binding.numeroPiloto2.setText(numeroPiloto2)
+        binding.numeroPiloto2.setText(numeroPiloto2.toString())
         binding.submitButton.setOnClickListener {
-            val equipo = Equipo(id, binding.nombreEquipo.toString(), binding.nombrePiloto1.toString(), binding.numeroPiloto1.toString().toInt(), binding.nombrePiloto2.toString(), binding.numeroPiloto2.toString().toInt())
+            val equipo = Equipo(
+                id,
+                binding.equipoNombre.editText?.text.toString(),
+                binding.namePiloto1.editText?.text.toString(),
+                binding.numberPiloto1.editText?.text.toString().toInt(),
+                binding.namePiloto2.editText?.text.toString(),
+                binding.numberPiloto2.editText?.text.toString().toInt()
+            )
             val result = Bundle().apply {
                 putParcelable("equipo", equipo)
             }
             setFragmentResult("equipoKey", result)
             findNavController().navigateUp()
         }
+
+
         binding.cancelButton.setOnClickListener {
             findNavController().navigateUp()
         }

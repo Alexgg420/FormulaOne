@@ -10,6 +10,9 @@
         android:label="fragment_equipo_list"
         tools:layout="@layout/fragment_equipo_list">
         <action
+        android:id="@+id/action_equipoListFragment_to_equipoCreateFragment"
+        app:destination="@id/equipoCreateFragment" />
+        <action
             android:id="@+id/action_equipoListFragment_to_equipoDetailFragment"
             app:destination="@id/equipoDetailFragment" />
     </fragment>

@@ -53,7 +53,7 @@ class EquipoListFragment : Fragment() {
         }
 
         binding.createEquipo.setOnClickListener {
-            //findNavController().navigate(R.id.action_equipoListFragment_to_equipoCreateFragment)
+            findNavController().navigate(R.id.action_equipoListFragment_to_equipoCreateFragment)
         }
     }
 

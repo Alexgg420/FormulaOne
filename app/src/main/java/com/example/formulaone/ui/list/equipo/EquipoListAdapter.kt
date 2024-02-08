@@ -40,5 +40,4 @@ class EquipoListAdapter (private val context: Context, private val onEdit: (Equi
     override fun onBindViewHolder(holder: EquipoViewHolder, position: Int) {
         holder.bindEquipo(getItem(position))
     }
-
 }

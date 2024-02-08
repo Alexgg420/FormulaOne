@@ -18,7 +18,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PilotoListFragment : Fragment() {
-
     private lateinit var binding: FragmentPilotoListBinding
     private val viewModel: PilotoListViewModel by viewModels()
     override fun onCreateView(

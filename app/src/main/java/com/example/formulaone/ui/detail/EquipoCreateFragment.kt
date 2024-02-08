@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,6 +18,7 @@ import com.example.formulaone.data.database.EquipoLocalRepository
 import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.FragmentEquipoCreateBinding
 import com.example.formulaone.ui.MainActivity
+import com.google.android.material.snackbar.Snackbar
 
 class EquipoCreateFragment : Fragment() {
     private lateinit var binding: FragmentEquipoCreateBinding
@@ -31,11 +33,6 @@ class EquipoCreateFragment : Fragment() {
             .inflate(inflater, container, false)
         return binding.root
     }
-    var nombreEquipo = ""
-    var nombrePiloto1 = ""
-    var numeroPiloto1 = 0
-    var nombrePiloto2 = ""
-    var numeroPiloto2 = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,11 +42,12 @@ class EquipoCreateFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-        binding.nombreEquipo.setText(nombreEquipo)
-        binding.nombrePiloto1.setText(nombrePiloto1)
-        binding.numeroPiloto1.setText(numeroPiloto1.toString())
-        binding.nombrePiloto2.setText(nombrePiloto2)
-        binding.numeroPiloto2.setText(numeroPiloto2.toString())
+        binding.nombreEquipo.setText("")
+        binding.nombrePiloto1.setText("")
+        binding.numeroPiloto1.setText("")
+        binding.nombrePiloto2.setText("")
+        binding.numeroPiloto2.setText("")
+        binding.submitButton.isEnabled = false
         binding.submitButton.setOnClickListener {
             val equipo = Equipo(
                 id,
@@ -59,16 +57,51 @@ class EquipoCreateFragment : Fragment() {
                 binding.namePiloto2.editText?.text.toString(),
                 binding.numberPiloto2.editText?.text.toString().toInt()
             )
-            val result = Bundle().apply {
-                putParcelable("equipo", equipo)
+            if (isValidInput(equipo)) {
+                repository.add(equipo)
+                val result = Bundle().apply {
+                    putParcelable("equipo", equipo)
+                }
+                setFragmentResult("equipoKey", result)
+                findNavController().navigateUp()
+            } else {
+                // Mostrar un mensaje de advertencia al usuario si algún campo está vacío o fuera de rango
+                Snackbar.make(
+                    requireView(),
+                    "Por favor, complete todos los campos correctamente.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
-            setFragmentResult("equipoKey", result)
-            findNavController().navigateUp()
         }
-
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigateUp()
         }
+
+        binding.nombreEquipo.addTextChangedListener { validateFields() }
+        binding.nombrePiloto1.addTextChangedListener { validateFields() }
+        binding.nombrePiloto2.addTextChangedListener { validateFields() }
+        binding.numberPiloto1.editText?.addTextChangedListener { validateFields() }
+        binding.numberPiloto2.editText?.addTextChangedListener { validateFields() }
+    }
+    private fun isValidInput(equipo: Equipo): Boolean {
+        return equipo.nombreEquipo.isNotBlank() &&
+                equipo.piloto1Nombre.isNotBlank() &&
+                equipo.piloto2Nombre.isNotBlank() &&
+                equipo.piloto1Number in 1..99 &&
+                equipo.piloto2Number in 1..99
+    }
+
+    private fun validateFields() {
+        val equipona = binding.equipoNombre.editText?.text.toString()
+        val equipona1 = binding.namePiloto1.editText?.text.toString()
+        val equipona2 = binding.namePiloto2.editText?.text.toString()
+        val equipono1 = binding.numberPiloto1.editText?.text.toString()
+        val equipono2 = binding.numberPiloto2.editText?.text.toString()
+
+        val fieldsNotEmpty = equipona.isNotBlank() && equipona1.isNotBlank() && equipona2.isNotBlank() && equipono1.isNotBlank() && equipono2.isNotBlank()
+        val validNumbers = equipono1.toIntOrNull() in 1..99 && equipono2.toIntOrNull() in 1..99
+
+        binding.submitButton.isEnabled = fieldsNotEmpty && validNumbers
     }
 }

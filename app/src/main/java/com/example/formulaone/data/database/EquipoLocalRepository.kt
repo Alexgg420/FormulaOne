@@ -1,8 +1,10 @@
 package com.example.formulaone.data.database
 
+import android.util.Log
 import com.example.formulaone.data.repository.Equipo
+import javax.inject.Inject
 
-class EquipoLocalRepository() {
+class EquipoLocalRepository @Inject constructor() {
     companion object {
         private var _INSTANCE:EquipoLocalRepository? = null
         fun getInstance():EquipoLocalRepository {
@@ -33,6 +35,26 @@ class EquipoLocalRepository() {
         if (existingEquipo != null) {
             val index = _equipo.indexOf(existingEquipo)
             _equipo[index] = equipo
+        }
+    }
+
+    suspend fun getAllEquipos(): List<Equipo> {
+        try {
+            val equipos = _equipo.map { equipoListItem ->
+                Equipo(
+                    equipoListItem.id,
+                    equipoListItem.nombreEquipo,
+                    equipoListItem.piloto1Nombre,
+                    equipoListItem.piloto1Number,
+                    equipoListItem.piloto2Nombre,
+                    equipoListItem.piloto2Number
+                )
+            }
+            return equipos
+        } catch (e: Exception) {
+            // Manejar errores al obtener los equipos
+            Log.e("Error", "Error al obtener equipos", e)
+            return emptyList()
         }
     }
 }

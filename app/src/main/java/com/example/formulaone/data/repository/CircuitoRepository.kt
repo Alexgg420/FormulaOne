@@ -5,7 +5,9 @@ import com.example.formulaone.data.api.circuitoApi.asEntityModelList
 import com.example.formulaone.data.api.pilotoApi.PilotoApiRepository
 import com.example.formulaone.data.api.pilotoApi.asEntityModelList
 import com.example.formulaone.data.database.CircuitoDBRepository
+import com.example.formulaone.data.database.EquipoLocalRepository
 import com.example.formulaone.data.database.circuito.asListCircuit
+import com.example.formulaone.data.database.equipo.EquipoEntity
 import com.example.formulaone.data.database.equipo.asListEquipo
 import com.example.formulaone.data.database.piloto.asListPiloto
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +22,7 @@ class CircuitoRepository @Inject constructor(
     private val dbRepository: CircuitoDBRepository,
     private val apiRepository: CircuitoApiRepository,
     private val apiRepository2: PilotoApiRepository,
-    //private val localRepository: EquipoLocalRepository
+    private val localRepository: EquipoLocalRepository
 ) {
     val allCircuitos: Flow<List<Circuito>>
         get() = dbRepository.allCircuitos
@@ -46,16 +48,28 @@ class CircuitoRepository @Inject constructor(
                 }
             }
 
+    fun List<Equipo>.asEntityModelList(): List<EquipoEntity> {
+        return this.map {
+            EquipoEntity(
+                it.id,
+                it.nombreEquipo,
+                it.piloto1Nombre,
+                it.piloto1Number,
+                it.piloto2Nombre,
+                it.piloto2Number
+            )
+        }
+    }
 
     suspend fun refreshList() {
         withContext(Dispatchers.IO) {
             try {
                 val apiCircuito = apiRepository.getAllCircuitos()
                 val apiPiloto = apiRepository2.getAllPilotos()
-                //val localEquipo = localRepository.getAllEquipos()
+                val localEquipo = localRepository.getAllEquipos()
                 dbRepository.insert(apiCircuito.asEntityModelList())
                 dbRepository.insertt(apiPiloto.asEntityModelList())
-                //dbRepository.inserttt(localEquipo.asEntityModelList())
+                dbRepository.inserttt(localEquipo.asEntityModelList())
             } catch (e: Exception) {
                 e.printStackTrace()
             }

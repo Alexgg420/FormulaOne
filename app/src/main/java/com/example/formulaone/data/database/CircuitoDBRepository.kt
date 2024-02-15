@@ -27,8 +27,11 @@ class CircuitoDBRepository @Inject constructor(private val circuitoDao: Circuito
         pilotoDao.createPiloto(listPilotoEntity)
     }
 
-    @WorkerThread
-    suspend fun inserttt(listEquipoEntity: List<EquipoEntity>) {
-        equipoDao.createEquipo(listEquipoEntity)
+    suspend fun getAllPilotos(): Flow<List<PilotoEntity>> {
+        return pilotoDao.getAllPilotos()
+    }
+
+    suspend fun inserttt(equipoEntity: EquipoEntity) {
+        equipoDao.createEquipo(equipoEntity)
     }
 }

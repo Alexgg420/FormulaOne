@@ -33,7 +33,7 @@ class PilotoListAdapter(private val context: Context, private val onItemClick: (
             "gasly" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5501.png&w=350&h=254"
             "hamilton" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/868.png&w=350&h=254"
             "hulkenberg" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/4396.png&w=350&h=254"
-            "lawson" -> "https://cdn.racingnews365.com/_570x570_crop_center-center_none/liam-lawson-1080.png?v=1688631852"
+            "lawson" -> "https://soymotor.com/sites/default/files/2023-08/liam-lawson.png"
             "leclerc" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5498.png&w=350&h=254"
             "kevin_magnussen" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/4623.png&w=350&h=254"
             "norris" -> "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5579.png&w=350&h=254"

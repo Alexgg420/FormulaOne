@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Formula Uno</string>
+    <string name="gp_text">Gran Premio</string>
+    <string name="circuitos">Circuitos</string>
+    <string name="pilotos">Pilotos</string>
+    <string name="piloto">Piloto</string>
+    <string name="equipos">Equipos</string>
+    <string name="equipo">Equipo</string>
+    <string name="ronda_text">Ronda</string>
+    <string name="circuitName_text">Nombre del circuito</string>
+    <string name="countryName_text">País del circuito</string>
+    <string name="cityName_text">Ciudad del circuito</string>
+    <string name="day_text">Día de la carrera</string>
+    <string name="hour_text">Hora de la carrera</string>
+    <string name="name_text">Nombre</string>
+    <string name="code_text">Código</string>
+    <string name="number_text">Número del piloto</string>
+    <string name="fecnac">Fecha de nacimiento</string>
+    <string name="nac">Nacionalidad</string>
+    <string name="smo_text">Ver más</string>
+    <string name="new_team">Nuevo equipo</string>
+    <string name="equipo_name">Nombre del equipo</string>
+    <string name="piloto1name">Nombre del primer piloto</string>
+    <string name="piloto1no">Número del primer piloto</string>
+    <string name="piloto2name">Nombre del segundo piloto</string>
+    <string name="piloto2no">Número del segundo piloto</string>
+    <string name="confirm">Crear equipo</string>
+    <string name="cancel">Cancelar</string>
+</resources>

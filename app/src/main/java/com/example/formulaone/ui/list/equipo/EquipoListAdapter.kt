@@ -1,29 +1,43 @@
 package com.example.formulaone.ui.list.equipo
 
 import android.content.Context
+import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.formulaone.R
 import com.example.formulaone.data.repository.Equipo
 import com.example.formulaone.databinding.EquipoItemBinding
 
 class EquipoListAdapter (private val context: Context, private val onEdit: (Equipo) -> Unit
 ): ListAdapter<Equipo, EquipoListAdapter.EquipoViewHolder>(EquipoDiffCallBack) {
-    var onEditClickListener: ((Equipo, View) -> Unit)? = null
     inner class EquipoViewHolder(val binding: EquipoItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bindEquipo(e: Equipo) {
-            val imageUrl = obtenerUrlImagen()
+        fun bindEquipo(e: Equipo, view: View) {
+            val imageUrl = obtenerUrlImagen(context)
             binding.equipoImageView.load(imageUrl)
             binding.equipoNombre.text = e.nombreEquipo
+            binding.showMoreButton.setOnClickListener {
+                onShowDetail(e, view)
+            }
         }
     }
 
-    private fun obtenerUrlImagen(): String {
-        return "https://www.thedesignfrontier.com/wp-content/uploads/2019/05/f1-logo.png"
+    fun onShowDetail(equipo: Equipo, view: View) {
+        val bundle = Bundle()
+        bundle.putParcelable("equipo", equipo)
+        val navController = Navigation.findNavController(view)
+        navController.navigate(R.id.action_equipoListFragment_to_equipoDetailFragment, bundle)
+    }
+
+
+    private fun obtenerUrlImagen(context: Context): String {
+        return Uri.parse("android.resource://${context.packageName}/${R.drawable.iconequipo}").toString()
     }
 
     private object EquipoDiffCallBack: DiffUtil.ItemCallback<Equipo>() {
@@ -38,6 +52,7 @@ class EquipoListAdapter (private val context: Context, private val onEdit: (Equi
     }
 
     override fun onBindViewHolder(holder: EquipoViewHolder, position: Int) {
-        holder.bindEquipo(getItem(position))
+        val view = holder.itemView
+        holder.bindEquipo(getItem(position), view)
     }
 }

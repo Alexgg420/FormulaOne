@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.example.formulaone.R
 import com.example.formulaone.databinding.FragmentPilotoDetailBinding
 
 class PilotoDetailFragment : Fragment() {
@@ -36,11 +37,11 @@ class PilotoDetailFragment : Fragment() {
         }
         val imageUrl = obtenerUrlImagen(args.piloto.driverId)
         binding.pilotoImageView.load(imageUrl)
-        binding.pilotoNameText.text = "Nombre: " + args.piloto.name + " " + args.piloto.surname
-        binding.pilotoCode.text = "Código: " + args.piloto.code
-        binding.pilotoNumber.text = "Número: " + args.piloto.permanentNumber
-        binding.pilotoNation.text = "Nacionalidad: " + args.piloto.nation
-        binding.pilotoFecNac.text = "Fecha de nacimiento: " + args.piloto.fecNac
+        binding.pilotoNameText.text = getString(R.string.name_text) + ": " + args.piloto.name + " " + args.piloto.surname
+        binding.pilotoCode.text = getString(R.string.code_text) + ": " + args.piloto.code
+        binding.pilotoNumber.text = getString(R.string.number_text) + ": " + args.piloto.permanentNumber
+        binding.pilotoNation.text = getString(R.string.nac) + ": " + args.piloto.nation
+        binding.pilotoFecNac.text = getString(R.string.fecnac) + ": " + args.piloto.fecNac
     }
 
     private fun obtenerUrlImagen(driverId: String): String {

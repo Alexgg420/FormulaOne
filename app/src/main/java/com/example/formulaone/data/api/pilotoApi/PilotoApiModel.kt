@@ -74,3 +74,19 @@ fun List<PilotoApiModel>.asEntityModelList(): List<PilotoEntity> {
         )
     }
 }
+
+fun List<PilotoListApiModel>.asEntityModel(): List<PilotoEntity> {
+    return this.flatMap { pilotoListApiModel ->
+        pilotoListApiModel.pilotoList.map { pilotoApiModel ->
+            PilotoEntity(
+                driverId = pilotoApiModel.driverId,
+                permanentNumber = pilotoApiModel.permanentNumber,
+                code = pilotoApiModel.code,
+                name = pilotoApiModel.name,
+                surname = pilotoApiModel.surname,
+                fecNac = pilotoApiModel.fecNac,
+                nation = pilotoApiModel.nation
+            )
+        }
+    }
+}

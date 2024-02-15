@@ -24,19 +24,6 @@ class EquipoLocalRepository @Inject constructor() {
         equipo.id = ++id
         _equipo.add(equipo)
     }
-    fun delete(id:Int) {
-        val existingEquipo = _equipo.find {it.id == id}
-        if (existingEquipo != null) {
-            _equipo.remove(existingEquipo)
-        }
-    }
-    fun update(equipo: Equipo) {
-        val existingEquipo = _equipo.find {it.id == equipo.id}
-        if (existingEquipo != null) {
-            val index = _equipo.indexOf(existingEquipo)
-            _equipo[index] = equipo
-        }
-    }
 
     suspend fun getAllEquipos(): List<Equipo> {
         try {

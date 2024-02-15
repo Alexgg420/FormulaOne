@@ -20,7 +20,7 @@
             android:contentDescription="IMAGEN"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/f1_logo">
+            app:srcCompat="@drawable/iconequipo">
         </ImageView>
         <TextView
             android:id="@+id/equipoNombre"
@@ -34,13 +34,14 @@
             tools:text="NOMBRE">
         </TextView>
         <Button
-            android:id="@+id/edit_button"
+            android:id="@+id/showMoreButton"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Editar"
-            app:icon="@drawable/edit_icon"
+            android:text="@string/smo_text"
+            android:textSize="20sp"
+            app:icon="@drawable/iconexpand"
+            app:iconSize="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/equipoImageView"
             app:layout_constraintBottom_toBottomOf="@id/equipoImageView">

@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_margin="8dp">
+    android:background="@color/white">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="403dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp">
         <com.google.android.material.appbar.MaterialToolbar
@@ -18,7 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="EQUIPO">
+            app:title= "@string/equipo">
         </com.google.android.material.appbar.MaterialToolbar>
         <ImageView
             android:id="@+id/equipoImageView"
@@ -28,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolBar"
-            app:srcCompat="@drawable/f1_logo">
+            app:srcCompat="@drawable/iconequipo">
         </ImageView>
         <TextView
             android:id="@+id/equipoName"
@@ -52,31 +51,30 @@
             android:background="@color/red"
             android:gravity="center_horizontal"
             android:padding="8dp"
+            android:text="@string/pilotos"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/piloto1Img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/equipoName"
-            tools:text="PILOTOS">
+            app:layout_constraintTop_toBottomOf="@id/equipoName">
         </TextView>
         <ImageView
             android:id="@+id/piloto1Img"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:adjustViewBounds="true"
             app:layout_constraintEnd_toStartOf="@id/dividerView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/equipoPilotosText"
-            app:srcCompat="@drawable/f1_logo">
+            app:srcCompat="@drawable/iconpiloto">
         </ImageView>
         <TextView
             android:id="@+id/piloto1Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/dividerView"
@@ -100,8 +98,8 @@
         <View
             android:id="@+id/dividerView"
             android:layout_width="3dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="30dp"
             android:background="@android:color/holo_red_dark"
             app:layout_constraintEnd_toStartOf="@id/piloto2Img"
             app:layout_constraintStart_toEndOf="@id/piloto1Img"
@@ -111,18 +109,18 @@
             android:id="@+id/piloto2Img"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:adjustViewBounds="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/dividerView"
             app:layout_constraintTop_toBottomOf="@id/equipoPilotosText"
-            app:srcCompat="@drawable/f1_logo">
+            app:srcCompat="@drawable/iconpiloto">
         </ImageView>
         <TextView
             android:id="@+id/piloto2Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"

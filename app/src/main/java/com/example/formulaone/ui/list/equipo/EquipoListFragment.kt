@@ -1,5 +1,6 @@
 package com.example.formulaone.ui.list.equipo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,8 +43,7 @@ class EquipoListFragment : Fragment() {
         val adapter = EquipoListAdapter(requireContext()) { equipo ->
             onShowDetail(equipo, view)
         }
-        val rv = binding.equipoList
-        rv.adapter = adapter
+        binding.equipoList.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
@@ -53,7 +53,7 @@ class EquipoListFragment : Fragment() {
         }
 
         binding.createEquipo.setOnClickListener {
-            findNavController().navigate(R.id.action_equipoListFragment_to_equipoCreateFragment)
+            findNavController().navigate(R.id.action_equipoListFragment_to_equipoFragment)
         }
     }
 

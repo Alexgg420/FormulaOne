@@ -4,6 +4,7 @@ import com.example.formulaone.data.api.circuitoApi.CircuitoApiRepository
 import com.example.formulaone.data.api.circuitoApi.asEntityModelList
 import com.example.formulaone.data.api.pilotoApi.PilotoApiRepository
 import com.example.formulaone.data.api.pilotoApi.asEntityModelList
+import com.example.formulaone.data.api.pilotoApi.asEntityModel
 import com.example.formulaone.data.database.CircuitoDBRepository
 import com.example.formulaone.data.database.EquipoLocalRepository
 import com.example.formulaone.data.database.circuito.asListCircuit
@@ -12,6 +13,7 @@ import com.example.formulaone.data.database.equipo.asListEquipo
 import com.example.formulaone.data.database.piloto.asListPiloto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -21,8 +23,7 @@ import javax.inject.Singleton
 class CircuitoRepository @Inject constructor(
     private val dbRepository: CircuitoDBRepository,
     private val apiRepository: CircuitoApiRepository,
-    private val apiRepository2: PilotoApiRepository,
-    private val localRepository: EquipoLocalRepository
+    private val apiRepository2: PilotoApiRepository
 ) {
     val allCircuitos: Flow<List<Circuito>>
         get() = dbRepository.allCircuitos
@@ -40,25 +41,8 @@ class CircuitoRepository @Inject constructor(
                 }
             }
 
-    val allEquipo: Flow<List<Equipo>>
-        get() = dbRepository.allEquipos
-            .map { entities ->
-                withContext(Dispatchers.Default) {
-                    entities.asListEquipo()
-                }
-            }
-
-    fun List<Equipo>.asEntityModelList(): List<EquipoEntity> {
-        return this.map {
-            EquipoEntity(
-                it.id,
-                it.nombreEquipo,
-                it.piloto1Nombre,
-                it.piloto1Number,
-                it.piloto2Nombre,
-                it.piloto2Number
-            )
-        }
+    suspend fun getAllPilotos(): Flow<List<Piloto>> {
+        return dbRepository.getAllPilotos().map { it.asListPiloto() }
     }
 
     suspend fun refreshList() {
@@ -66,14 +50,40 @@ class CircuitoRepository @Inject constructor(
             try {
                 val apiCircuito = apiRepository.getAllCircuitos()
                 val apiPiloto = apiRepository2.getAllPilotos()
-                val localEquipo = localRepository.getAllEquipos()
                 dbRepository.insert(apiCircuito.asEntityModelList())
                 dbRepository.insertt(apiPiloto.asEntityModelList())
-                dbRepository.inserttt(localEquipo.asEntityModelList())
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
+    val allEquipos: Flow<List<Equipo>>
+        get() {
+            val list = dbRepository.allEquipos.map {
+                it.asListEquipo()
+            }
+            return list
+        }
 
+    // Función para encontrar el ID del último equipo creado
+    private suspend fun encontrarUltimoIdEquipo(): Int {
+        val equipos = dbRepository.allEquipos.firstOrNull()
+        return equipos?.maxByOrNull { it.id }?.id ?: 0
+    }
+
+    suspend fun createEquipo(equipo: Equipo) {
+        withContext(Dispatchers.IO) {
+            val ultimoId = encontrarUltimoIdEquipo()
+            val nuevoId = ultimoId + 1
+            val equipoEntity = EquipoEntity(
+                nuevoId,
+                equipo.nombreEquipo,
+                equipo.piloto1Nombre,
+                equipo.piloto1Number,
+                equipo.piloto2Nombre,
+                equipo.piloto2Number
+            )
+            dbRepository.inserttt(equipoEntity)
+        }
+    }
 }

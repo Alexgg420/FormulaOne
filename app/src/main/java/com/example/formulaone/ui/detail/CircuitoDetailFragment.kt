@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.example.formulaone.R
 import com.example.formulaone.databinding.FragmentCircuitoDetailBinding
 
 class CircuitoDetailFragment : Fragment() {
@@ -36,13 +37,13 @@ class CircuitoDetailFragment : Fragment() {
         }
         val imageUrl = obtenerUrlImagen(args.circuito.round)
         binding.circuitoImageView.load(imageUrl)
-        binding.circuitoRoundText.text = "Ronda: " + args.circuito.round
-        binding.circuitoRaceNameText.text = "Gran Premio: " + args.circuito.grandPrixName
-        binding.circuitoNameText.text = "Nombre del circuito: " + args.circuito.circuitoName
-        binding.circuitoCountryText.text = "País del circuito: " + args.circuito.circuitoCountry
-        binding.circuitoLocalText.text = "Cuidad del circuito: " + args.circuito.circuitoLocal
-        binding.circuitoDateText.text = "Día de la carrera: " + args.circuito.date
-        binding.circuitoTimeText.text = "Hora de la carrera: " + args.circuito.time
+        binding.circuitoRoundText.text = getString(R.string.ronda_text) + ": " + args.circuito.round
+        binding.circuitoRaceNameText.text = getString(R.string.gp_text) + ": " + args.circuito.grandPrixName
+        binding.circuitoNameText.text = getString(R.string.circuitName_text) + ": " + args.circuito.circuitoName
+        binding.circuitoCountryText.text = getString(R.string.countryName_text) + ": " + args.circuito.circuitoCountry
+        binding.circuitoLocalText.text = getString(R.string.cityName_text) + ": " + args.circuito.circuitoLocal
+        binding.circuitoDateText.text = getString(R.string.day_text) + ": " + args.circuito.date
+        binding.circuitoTimeText.text = getString(R.string.hour_text) + ": " + args.circuito.time
     }
     private fun obtenerUrlImagen(round: String): String {
         return when (round) {

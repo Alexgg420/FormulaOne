@@ -10,8 +10,8 @@
         android:label="fragment_equipo_list"
         tools:layout="@layout/fragment_equipo_list">
         <action
-        android:id="@+id/action_equipoListFragment_to_equipoCreateFragment"
-        app:destination="@id/equipoCreateFragment" />
+            android:id="@+id/action_equipoListFragment_to_equipoFragment"
+            app:destination="@id/equipoFragment" />
         <action
             android:id="@+id/action_equipoListFragment_to_equipoDetailFragment"
             app:destination="@id/equipoDetailFragment" />
@@ -27,9 +27,9 @@
         </argument>
     </fragment>
     <fragment
-        android:id="@+id/equipoCreateFragment"
-        android:name="com.example.formulaone.ui.detail.EquipoCreateFragment"
-        android:label="fragment_equipo_create"
-        tools:layout="@layout/fragment_equipo_create">
+        android:id="@+id/equipoFragment"
+        android:name="com.example.formulaone.ui.equipo.EquipoFragment"
+        android:label="fragment_equipo"
+        tools:layout="@layout/fragment_equipo">
     </fragment>
 </navigation>

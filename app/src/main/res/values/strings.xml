@@ -26,4 +26,5 @@
     <string name="piloto2no">Second driver\'s number</string>
     <string name="confirm">Create team</string>
     <string name="cancel">Cancel</string>
+    <string name="error_message">There cannot be: empty values, a number less than 1 or greater than 99, repetition of number or repetition of driver</string>
 </resources>

@@ -32,6 +32,7 @@ class EquipoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEquipoBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -42,6 +43,14 @@ class EquipoFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (errorMessage != null) {
+                binding.errorMessageTextView.visibility = View.VISIBLE
+                binding.errorMessageTextView.text = errorMessage
+            } else {
+                binding.errorMessageTextView.visibility = View.GONE
+            }
         }
 
         var pilotoselected1 = ""
@@ -80,20 +89,14 @@ class EquipoFragment : Fragment() {
             if (isValidInput(equipo)) {
                 viewModel.createEquipo(equipo)
                 findNavController().popBackStack()
-            } else if ((binding.numeroPiloto1.text.toString().toInt() < 1 || binding.numeroPiloto1.text.toString().toInt() > 99) || (binding.numeroPiloto2.text.toString().toInt() < 1 || binding.numeroPiloto2.text.toString().toInt() > 99)){
-                // Mostrar un mensaje de advertencia al usuario si algún campo está vacío o fuera de rango
-                Snackbar.make(
-                    requireView(),
-                    "Por favor, selecciona un número entre 1 y 99.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+            } else if (pilotoselected1 == pilotoselected2) {
+                viewModel.showError("Por favor, indica dos pilotos distintos")
+            } else if (binding.numeroPiloto1.text.toString().toInt() == binding.numeroPiloto2.text.toString().toInt()) {
+                viewModel.showError("Por favor, selecciona un número distinto para cada piloto")
+            } else if ((binding.numeroPiloto1.text.toString().toInt() < 1 || binding.numeroPiloto1.text.toString().toInt() > 99) || (binding.numeroPiloto2.text.toString().toInt() < 1 || binding.numeroPiloto2.text.toString().toInt() > 99)) {
+                viewModel.showError("Por favor, selecciona un número entre 1 y 99")
             } else {
-                // Mostrar un mensaje de advertencia al usuario si algún campo está vacío o fuera de rango
-                Snackbar.make(
-                    requireView(),
-                    "Por favor, complete todos los campos correctamente.",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                viewModel.showError("Por favor, rellena todos los campos")
             }
         }
 
@@ -113,7 +116,9 @@ class EquipoFragment : Fragment() {
                 equipo.piloto1Nombre.isNotBlank() &&
                 equipo.piloto2Nombre.isNotBlank() &&
                 equipo.piloto1Number in 1..99 &&
-                equipo.piloto2Number in 1..99
+                equipo.piloto2Number in 1..99 &&
+                equipo.piloto1Nombre != equipo.piloto2Nombre &&
+                equipo.piloto1Number != equipo.piloto2Number
     }
 
     private fun validateFields() {
@@ -125,7 +130,8 @@ class EquipoFragment : Fragment() {
 
         val fieldsNotEmpty = equipona.isNotBlank() && equipona1.isNotBlank() && equipona2.isNotBlank() && equipono1.isNotBlank() && equipono2.isNotBlank()
         val validNumbers = equipono1.toIntOrNull() in 1..99 && equipono2.toIntOrNull() in 1..99
+        val comprobar = equipona1 != equipona2 && equipono1 != equipono2
 
-        binding.submitButton.isEnabled = fieldsNotEmpty && validNumbers
+        binding.submitButton.isEnabled = fieldsNotEmpty && validNumbers && comprobar
     }
 }

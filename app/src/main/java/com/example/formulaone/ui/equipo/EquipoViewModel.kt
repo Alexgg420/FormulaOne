@@ -1,6 +1,9 @@
 package com.example.formulaone.ui.equipo
 
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.formulaone.data.api.pilotoApi.PilotoApiRepository
@@ -51,5 +54,13 @@ class EquipoViewModel @Inject constructor(private val repository: CircuitoReposi
                 Log.e("ERROR", e.toString())
             }
         }
+    }
+
+    private val _errorMessage = MutableLiveData<String?>()
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+
+    fun showError(message: String) {
+        _errorMessage.value = message
     }
 }

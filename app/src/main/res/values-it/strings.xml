@@ -26,4 +26,5 @@
     <string name="piloto2no">Numero del secondo pilota</string>
     <string name="confirm">Creare squadra</string>
     <string name="cancel">Annullare</string>
+    <string name="error_message">Non possono esserci: valori vuoti, un numero inferiore a 1 o maggiore di 99, ripetizione di numero o ripetizione di pilota</string>
 </resources>
